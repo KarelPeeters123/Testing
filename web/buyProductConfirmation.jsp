@@ -15,34 +15,15 @@
 
 
     <main>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price per product</th>
-                <th>Amount</th>
+        <p><b>${product.name}</b></p>
+        <form method="post" action="Controller?action=buyProduct" novalidate="novalidate">
 
-            </tr>
+            <p><label for="amountBuy">Amount</label><input type="number" id="amountBuy" name="amount"
+                                                                   required value="${fn:escapeXml(pricePreviousValue)}"> </p>
+            <p><input type="submit" id="buy" value="buy"></p>
 
-            <c:forEach var="user" items="${users}">
-                <tr>
-                    <td>${fn:escapeXml(user.userid)}</td>
-                    <td>${fn:escapeXml(user.email)}</td>
-                    <td>${fn:escapeXml(user.firstName)}</td>
-                    <td><form method="post" action="Controller?action=AddProduct" novalidate="novalidate">
-
-                        <p><label for="amountBuy">Amount</label><input type="number" id="amountBuy" name="amount"
-                                                                       required value="${fn:escapeXml(pricePreviousValue)}"> </p>
-                        <p><input type="submit" id="buy" value="AddProduct"></p>
-
-                    </form>
-                    </td>
-
-                </tr>
-            </c:forEach>
-
+        </form>
             <caption>Buy product confirmation</caption>
-        </table>
 
     </main>
 
