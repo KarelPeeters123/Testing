@@ -4,6 +4,7 @@ import domain.db.DbException;
 import domain.model.DomainException;
 import domain.model.Product;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -13,6 +14,10 @@ public class AddProduct extends ProductOverview {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<String> errors = new ArrayList<>();
+
+        if (!getCurrentUser(request).equals("admin")) {
+            errors.add("You have to be admin to add a product.");
+        }
 
         Product product = new Product();
         setProductName(product, request, errors);
@@ -36,6 +41,15 @@ public class AddProduct extends ProductOverview {
             request.setAttribute("errors", errors);
             return "addProduct.jsp";
         }
+    }
+
+    private String getCurrentUser(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null)
+            for (Cookie cookie : cookies)
+                if (cookie.getName().equals("loggedin"))
+                    return cookie.getValue();
+        return "";
     }
 
     private void setProductName(Product product, HttpServletRequest request, ArrayList<String> errors) {

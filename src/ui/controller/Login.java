@@ -4,7 +4,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Login extends ProductOverview {
+public class Login extends Index {
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -15,11 +15,11 @@ public class Login extends ProductOverview {
             if (getService().getPerson(userid).isCorrectPassword(password)) {
                 Cookie cookie = new Cookie("loggedin", userid);
                 response.addCookie(cookie);
-                return super.handleProductOverviewRequest(request, response);
+                return super.handleRequest(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "index.jsp";
+        return super.handleRequest(request, response);
     }
 }

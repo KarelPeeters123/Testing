@@ -22,6 +22,7 @@
                 <th>E-mail</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Delete</th>
                 <th>Check password</th>
             </tr>
 
@@ -31,6 +32,7 @@
                     <td>${fn:escapeXml(user.email)}</td>
                     <td>${fn:escapeXml(user.firstName)}</td>
                     <td>${fn:escapeXml(user.lastName)}</td>
+                    <td><a href="Controller?action=DeletePerson&id=${fn:escapeXml(user.userid)}">Delete</a></td>
                     <td><a href="Controller?action=CheckPassword&id=${fn:escapeXml(user.userid)}">Check</a></td>
                 </tr>
             </c:forEach>
