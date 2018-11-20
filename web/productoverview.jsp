@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta charset="UTF-8">
     <title>Product Overview</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -16,6 +16,12 @@
     </jsp:include>
 
     <main>
+        <c:if test="${error != null}">
+            <div class="alert-danger">
+                <p>${error}</p>
+            </div>
+        </c:if>
+
         <table>
             <tr>
                 <th>Name</th>
@@ -28,7 +34,8 @@
                     <td>${fn:escapeXml(product.name)}</td>
                     <td>${fn:escapeXml(product.description)}</td>
                     <td>&euro; ${fn:escapeXml(product.price)}</td>
-                    <td><a href="Controller?action=BuyProductOverview&id=${fn:escapeXml(product.productId)}">Buy</a></td>
+                    <td><a href="Controller?action=BuyProductOverview&id=${fn:escapeXml(product.productId)}">Buy</a>
+                    </td>
                 </tr>
             </c:forEach>
 

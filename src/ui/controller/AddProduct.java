@@ -43,15 +43,6 @@ public class AddProduct extends ProductOverview {
         }
     }
 
-    private String getCurrentUser(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null)
-            for (Cookie cookie : cookies)
-                if (cookie.getName().equals("loggedin"))
-                    return cookie.getValue();
-        return "";
-    }
-
     private void setProductName(Product product, HttpServletRequest request, ArrayList<String> errors) {
         String name = request.getParameter("name");
         try {
