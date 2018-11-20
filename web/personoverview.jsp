@@ -18,6 +18,7 @@
     <main>
         <table>
             <tr>
+                <th>ID</th>
                 <th>E-mail</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -27,6 +28,7 @@
 
             <c:forEach var="user" items="${users}">
                 <tr>
+                    <td>${fn:escapeXml(user.userid)}</td>
                     <td>${fn:escapeXml(user.email)}</td>
                     <td>${fn:escapeXml(user.firstName)}</td>
                     <td>${fn:escapeXml(user.lastName)}</td>
