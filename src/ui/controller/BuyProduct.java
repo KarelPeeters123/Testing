@@ -7,7 +7,7 @@ public class BuyProduct extends RequestHandler {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("amount", request.getParameter("amount"));
-        request.setAttribute("naam", getService().getProduct(Integer.valueOf(request.getParameter("id"))));
+        request.setAttribute("Product", getService().getProduct(Integer.valueOf(request.getParameter("id"))));
         return "buyProduct.jsp";
 
     }
