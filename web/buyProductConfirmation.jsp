@@ -11,19 +11,29 @@
 <body>
 <div id="container">
 
-    <jsp:include page="header.jsp"/>
-
+    <jsp:include page="header.jsp">
+        <jsp:param name="title" value="Buy product"></jsp:param>
+    </jsp:include>
 
     <main>
-        <p><b>${product.name}</b></p>
-        <form method="post" action="Controller?action=buyProduct" novalidate="novalidate">
 
-            <p><label for="amountBuy">Amount</label><input type="number" id="amountBuy" name="amount"
-                                                                   required value="${fn:escapeXml(pricePreviousValue)}"> </p>
-            <p><input type="submit" id="buy" value="buy"></p>
+        <h3>Overview</h3>
 
+        <p>User: ${user}</p>
+        <p>Product: ${product.name}</p>
+        <p>Description: ${product.description}</p>
+        <p>Price: € ${product.price}</p>
+
+        <form method="post" action="Controller?action=BuyProduct&id=${fn:escapeXml(product.productId)}"
+              novalidate="novalidate">
+            <p>
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" name="amount" required>
+            </p>
+            <p>
+                <input type="submit" id="buy" value="Buy">
+            </p>
         </form>
-            <caption>Buy product confirmation</caption>
 
     </main>
 

@@ -13,6 +13,7 @@ public class BuyProductOverview extends ProductOverview {
         } else {
             int id = Integer.valueOf(request.getParameter("id"));
             request.setAttribute("product", getService().getProduct(id));
+            request.setAttribute("user", getCurrentUser(request));
             return "buyProductConfirmation.jsp";
         }
 
