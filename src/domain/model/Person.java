@@ -14,10 +14,10 @@ public class Person {
 	private String firstName;
 	private String lastName;
 
-	public Person(String userid, String email, String password, String firstName, String lastName) {
+	public Person(String userid, String email, String password, String firstName, String lastName) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		setUserid(userid);
 		setEmail(email);
-		setPassword(password);
+		setPasswordHashed(password);
 		setFirstName(firstName);
 		setLastName(lastName);
 	}

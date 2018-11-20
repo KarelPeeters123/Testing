@@ -5,7 +5,7 @@
     <h1><span>Web shop</span></h1>
     <nav>
         <ul>
-            <li id="<c:if test="${param.title eq 'Home'}">actual</c:if>"><a href="index.jsp">Home</a></li>
+            <li id="<c:if test="${param.title eq 'Home'}">actual</c:if>"><a href="Controller">Home</a></li>
             <li id="<c:if test="${param.title eq 'Overview'}">actual</c:if>"><a id="" href="Controller?action=UserOverview">Users</a></li>
             <li id="<c:if test="${param.title eq 'Product Overview'}">actual</c:if>"><a href="Controller?action=ProductOverview">Products</a></li>
             <li id="<c:if test="${param.title eq 'Add Product'}">actual</c:if>"><a href="addProduct.jsp">Add Product</a></li>

@@ -2,6 +2,8 @@ package domain.db;
 
 import domain.model.Person;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +13,12 @@ public class PersonDbInMemory implements PersonDb {
 	private Map<String, Person> persons = new HashMap<>();
 	
 	public PersonDbInMemory () {
-		Person administrator = new Person("admin", "admin@ucll.be", "t", "Ad", "Ministrator");
+		Person administrator = null;
+		try {
+			administrator = new Person("admin", "admin@ucll.be", "t", "Ad", "Ministrator");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		add(administrator);
 	}
 	
