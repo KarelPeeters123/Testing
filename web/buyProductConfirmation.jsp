@@ -16,8 +16,11 @@
     </jsp:include>
 
     <main>
-
-        <h3>Buy product</h3>
+        <c:if test="${error != null}">
+            <div class="alert-danger">
+                <p>${error}</p>
+            </div>
+        </c:if>
 
         <p>User: ${user}</p>
         <p>Product: ${product.name}</p>
