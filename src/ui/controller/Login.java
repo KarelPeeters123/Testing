@@ -20,6 +20,7 @@ public class Login extends Index {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        request.setAttribute("error", "Invalid login credentials.");
         return super.handleRequest(request, response);
     }
 }
