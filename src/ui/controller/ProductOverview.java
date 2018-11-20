@@ -1,5 +1,6 @@
 package ui.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,9 +13,20 @@ public class ProductOverview extends RequestHandler {
 
     public String handleProductOverviewRequest(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("products", getService().getProducts());
-        return "productoverview.jsp";
+
+        if (getCurrentUser(request).equals("admin")) {
+            return "productoverviewAdmin.jsp";
+        } else {
+            return "productoverview.jsp";
+        }
+    }
+
+    private String getCurrentUser(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null)
+            for (Cookie cookie : cookies)
+                if (cookie.getName().equals("loggedin"))
+                    return cookie.getValue();
+        return "";
     }
 }
-
-
-// DIT IS JUIST
