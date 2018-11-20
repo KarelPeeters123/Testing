@@ -28,6 +28,7 @@
                     <td>${fn:escapeXml(product.name)}</td>
                     <td>${fn:escapeXml(product.description)}</td>
                     <td>&euro; ${fn:escapeXml(product.price)}</td>
+                    <td><a href="Controller?action=BuyProductOverview&id=${fn:escapeXml(product.productId)}">Buy</a></td>
                 </tr>
             </c:forEach>
 
