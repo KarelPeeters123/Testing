@@ -19,6 +19,8 @@
 
         <h3>Log in</h3>
 
+        <p>Current user: ${currentUser}</p>
+
         <form method="post" action="Controller?action=Login" novalidate="novalidate">
             <p>
                 <label for="userid">User id</label>
