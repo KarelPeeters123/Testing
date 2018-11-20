@@ -17,7 +17,7 @@
 
     <main>
 
-        <h3>Overview</h3>
+        <h3>Buy product</h3>
 
         <p>User: ${user}</p>
         <p>Product: ${product.name}</p>
