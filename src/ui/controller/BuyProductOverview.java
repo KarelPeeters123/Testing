@@ -9,6 +9,6 @@ public class BuyProductOverview extends RequestHandler{
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.valueOf(request.getParameter("id"));
         request.setAttribute("product", getService().getProduct(id));
-        return "BuyProductOverview.jsp";
+        return "buyProductConfirmation.jsp";
     }
 }
