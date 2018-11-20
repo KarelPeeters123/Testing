@@ -15,12 +15,15 @@ public class PersonDbInMemory implements PersonDb {
 	
 	public PersonDbInMemory () {
 		Person administrator = null;
+		Person user = null;
 		try {
 			administrator = new Person("admin", "admin@ucll.be", "t", "Ad", "Ministrator");
+			user = new Person("user", "user@ucll.be", "t", "U", "Ser");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		add(administrator);
+		add(user);
 	}
 	
 	@Override

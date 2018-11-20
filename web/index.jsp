@@ -16,13 +16,22 @@
     </jsp:include>
 
     <main>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit
-            voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-            qui ratione voluptatem sequi nesciunt.
-        </p>
+
+        <h3>Log in</h3>
+
+        <form method="post" action="Controller?action=Login" novalidate="novalidate">
+            <p>
+                <label for="userid">User id</label>
+                <input type="text" id="userid" name="userid" required>
+            </p>
+            <p>
+                <label for="passwd">Password</label>
+                <input type="password" id="passwd" name="passwd" required>
+            </p>
+            <p>
+                <input type="submit" id="login" value="Log in">
+            </p>
+        </form>
     </main>
 
     <jsp:include page="footer.jsp"/>
