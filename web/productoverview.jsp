@@ -35,9 +35,7 @@
             <caption>Product Overview</caption>
         </table>
     </main>
-    <footer>
-        &copy; Webontwikkeling 3, UC Leuven-Limburg
-    </footer>
+    <jsp:include page="footer.jsp"/>
 </div>
 </body>
 </html>

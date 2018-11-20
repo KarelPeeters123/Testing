@@ -27,8 +27,6 @@ public class Controller extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        ServletContext context = getServletContext();
-
         service = new ShopService();
     }
 

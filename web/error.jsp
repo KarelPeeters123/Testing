@@ -1,7 +1,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@page isErrorPage="true"%>
+         pageEncoding="UTF-8" %>
+<%@page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +23,7 @@
         </article>
     </main>
 
-    <footer>
-        &copy; Webontwikkeling 3, UC Leuven-Limburg
-    </footer>
+    <jsp:include page="footer.jsp"/>
 </div>
 </body>
 </html>
