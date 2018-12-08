@@ -1,6 +1,7 @@
 package domain.db;
 
 import domain.model.Person;
+import domain.model.Role;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -17,8 +18,8 @@ public class PersonDbInMemory implements PersonDb {
 		Person administrator = null;
 		Person user = null;
 		try {
-			administrator = new Person("admin", "admin@ucll.be", "t", "Ad", "Ministrator");
-			user = new Person("user", "user@ucll.be", "t", "U", "Ser");
+			administrator = new Person("admin", "admin@ucll.be", "t", "Ad", "Ministrator", Role.ADMIN);
+			user = new Person("user", "user@ucll.be", "t", "U", "Ser", Role.CUSTOMER);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

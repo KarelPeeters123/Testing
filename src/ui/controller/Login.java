@@ -1,8 +1,8 @@
 package ui.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Login extends Index {
 
@@ -13,8 +13,8 @@ public class Login extends Index {
 
         try {
             if (getService().getPerson(userid).isCorrectPassword(password)) {
-                Cookie cookie = new Cookie("loggedin", userid);
-                response.addCookie(cookie);
+                HttpSession session = request.getSession();
+                session.setAttribute("user", getService().getPerson(userid));
                 return super.handleRequest(request, response);
             }
         } catch (Exception e) {
@@ -23,4 +23,5 @@ public class Login extends Index {
         request.setAttribute("error", "Invalid login credentials.");
         return super.handleRequest(request, response);
     }
+
 }

@@ -19,11 +19,12 @@ public class SignUp extends UserOverview {
         setLastName(person, request, errors);
         setEmail(person, request, errors);
         setPassword(person, request, errors);
+        person.setRole(null);
 
         if (errors.size() == 0) {
             try {
                 getService().addPerson(person);
-                return super.handleUserOverviewRequest(request, response);  // DIT IS JUIST
+                return super.handleUserOverviewRequest(request, response);
             } catch (DbException e) {
                 if (e.getMessage().contains("duplicate key value")) {
                     errors.add("User already exists");

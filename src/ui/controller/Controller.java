@@ -40,14 +40,19 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        String destination = "index.jsp";
+        RequestHandler handler = controllerFactory.getController("Index", service);
+        String destination = handler.handleRequest(request, response);
         if (action != null) {
-            RequestHandler handler;
             handler = controllerFactory.getController(action, service);
-            destination = handler.handleRequest(request, response);
+            try {
+                destination = handler.handleRequest(request, response);
+            } catch (NotAuthorizedException e) {
+                request.setAttribute("notAuthorized",
+                        "You have insufficient rights to have a look at the requested page.");
+                destination = "error.jsp";
+            }
         }
-        RequestDispatcher view = request.getRequestDispatcher(destination);
-        view.forward(request, response);
+        request.getRequestDispatcher(destination).forward(request, response);
     }
 
 }

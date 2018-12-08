@@ -1,5 +1,7 @@
 package ui.controller;
 
+import domain.model.Person;
+import domain.model.Role;
 import domain.model.ShopService;
 
 import javax.servlet.http.Cookie;
@@ -12,20 +14,23 @@ public abstract class RequestHandler {
 
     public abstract String handleRequest(HttpServletRequest request, HttpServletResponse response);
 
-    public void setService(ShopService service) {
-        this.service = service;
-    }
-
     public ShopService getService() {
         return service;
     }
 
-    public String getCurrentUser(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null)
-            for (Cookie cookie : cookies)
-                if (cookie.getName().equals("loggedin"))
-                    return cookie.getValue();
-        return "";
+    public void setService(ShopService service) {
+        this.service = service;
+    }
+
+    public void checkRole(HttpServletRequest request, Role[] roles) {
+        boolean found = false;
+        Person person = (Person) request.getSession().getAttribute("user");
+        if (person != null)
+            for (Role role : roles) {
+                if (person.getRole().equals(role))
+                    found = true;
+            }
+        if (!found)
+            throw new NotAuthorizedException();
     }
 }

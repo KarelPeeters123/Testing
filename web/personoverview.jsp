@@ -22,6 +22,9 @@
                 <th>E-mail</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <c:if test="${sessionScope.user.role=='ADMIN'}">
+                    <th>Delete</th>
+                </c:if>
                 <th>Check password</th>
             </tr>
 
@@ -31,6 +34,9 @@
                     <td>${fn:escapeXml(user.email)}</td>
                     <td>${fn:escapeXml(user.firstName)}</td>
                     <td>${fn:escapeXml(user.lastName)}</td>
+                    <c:if test="${sessionScope.user.role=='ADMIN'}">
+                        <td><a href="Controller?action=DeletePerson&id=${fn:escapeXml(user.userid)}">Delete</a></td>
+                    </c:if>
                     <td><a href="Controller?action=CheckPassword&id=${fn:escapeXml(user.userid)}">Check</a></td>
                 </tr>
             </c:forEach>

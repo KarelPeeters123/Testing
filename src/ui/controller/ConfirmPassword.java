@@ -9,10 +9,10 @@ public class ConfirmPassword extends RequestHandler {
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("id");
         String password = request.getParameter("password");
-        String message = "";
+        String message = "NOT";
         try {
-            if (!getService().getPerson(id).isCorrectPassword(password)) {
-                message = "NOT ";
+            if (getService().getPerson(id).isCorrectPassword(password)) {
+                message = "";
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

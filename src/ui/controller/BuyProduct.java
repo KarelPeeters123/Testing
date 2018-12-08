@@ -15,7 +15,8 @@ public class BuyProduct extends RequestHandler {
             request.setAttribute("amount", amount);
         } catch (Exception e) {
             request.setAttribute("error", "Invalid amount.");
-            request.setAttribute("user", getCurrentUser(request));
+//            request.setAttribute("user", getCurrentUser(request));
+            // TODO cart maken
             request.setAttribute("product", product);
             return "buyProductConfirmation.jsp";
         }

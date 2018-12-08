@@ -12,12 +12,7 @@ public class ProductOverview extends RequestHandler {
 
     public String handleProductOverviewRequest(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("products", getService().getProducts());
-
-        if (getCurrentUser(request).equals("admin")) {
-            return "productoverviewAdmin.jsp";
-        } else {
-            return "productoverview.jsp";
-        }
+        return "productoverview.jsp";
     }
 
 }

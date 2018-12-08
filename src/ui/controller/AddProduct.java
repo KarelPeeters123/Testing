@@ -3,6 +3,7 @@ package ui.controller;
 import domain.db.DbException;
 import domain.model.DomainException;
 import domain.model.Product;
+import domain.model.Role;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +16,11 @@ public class AddProduct extends ProductOverview {
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<String> errors = new ArrayList<>();
 
-        if (!getCurrentUser(request).equals("admin")) {
-            errors.add("You have to be admin to add a product.");
+        Role[] roles = {Role.ADMIN};
+        try {
+            checkRole(request, roles);
+        } catch (NotAuthorizedException e) {
+            errors.add("Not authorized.");
         }
 
         Product product = new Product();

@@ -12,12 +12,6 @@ public class UserOverview extends RequestHandler {
 
     public String handleUserOverviewRequest(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("users", getService().getPersons());
-
-        if (getCurrentUser(request).equals("admin")) {
-            return "personoverviewAdmin.jsp";
-        } else {
-            return "personoverview.jsp";
-        }
+        return "personoverview.jsp";
     }
-
 }

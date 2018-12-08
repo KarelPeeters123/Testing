@@ -31,11 +31,25 @@
 
             <c:forEach var="product" items="${products}">
                 <tr>
-                    <td>${fn:escapeXml(product.name)}</td>
+                    <c:choose>
+                        <c:when test="${sessionScope.user.role=='ADMIN'}">
+                            <td>
+                                <a href="Controller?action=ToProductUpdate&id=${fn:escapeXml(product.productId)}">${fn:escapeXml(product.name)}</a>
+                            </td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>${fn:escapeXml(product.name)}</td>
+                        </c:otherwise>
+                    </c:choose>
+
                     <td>${fn:escapeXml(product.description)}</td>
                     <td>&euro; ${fn:escapeXml(product.price)}</td>
+                    <c:if test="${sessionScope.user.role=='ADMIN'}">
+                        <td>
+                            <a href="Controller?action=DeleteProduct&id=${fn:escapeXml(product.productId)}">Delete</a>
+                        </td>
+                    </c:if>
                     <td><a href="Controller?action=BuyProductOverview&id=${fn:escapeXml(product.productId)}">Buy</a>
-                    </td>
                 </tr>
             </c:forEach>
 

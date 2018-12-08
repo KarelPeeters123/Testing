@@ -13,13 +13,15 @@ public class Person {
 	private String password;
 	private String firstName;
 	private String lastName;
+	private Role role;
 
-	public Person(String userid, String email, String password, String firstName, String lastName) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+	public Person(String userid, String email, String password, String firstName, String lastName, Role role) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		setUserid(userid);
 		setEmail(email);
 		setPasswordHashed(password);
 		setFirstName(firstName);
 		setLastName(lastName);
+		setRole(role);
 	}
 	
 	public Person() {
@@ -114,7 +116,18 @@ public class Person {
 		}
 		this.lastName = lastName;
 	}
-	
+
+	public void setRole(Role role) {
+		if (role == null) {
+			role = Role.CUSTOMER;
+		}
+		this.role = role;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
 	@Override
 	public String toString(){
 		return getFirstName() + " " + getLastName() + ": " + getUserid() + ", " + getEmail();

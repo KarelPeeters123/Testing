@@ -19,7 +19,7 @@
 
     <main>
 
-        <p>The password is ${isCorrect}correct.</p>
+        <p>The password is ${isCorrect} correct.</p>
 
     </main>
     <jsp:include page="footer.jsp"/>
