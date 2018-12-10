@@ -14,6 +14,7 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private Role role;
+	private Address address;
 
 	public Person(String userid, String email, String password, String firstName, String lastName, Role role) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		setUserid(userid);
@@ -126,6 +127,15 @@ public class Person {
 
 	public Role getRole() {
 		return role;
+	}
+
+	public void setAddress(Address address) {
+		if (address == null) throw new IllegalArgumentException("Invalid address");
+		this.address = address;
+	}
+
+	public Address getAddress() {
+		return address;
 	}
 
 	@Override
