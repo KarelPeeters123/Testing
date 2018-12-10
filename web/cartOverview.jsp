@@ -39,7 +39,8 @@
                     </c:forEach>
                 </table>
 
-                <p>Total amount: ${total}</p>
+                <br><br>
+                <p>Total amount: &euro; ${total}</p>
 
             </c:otherwise>
         </c:choose>
