@@ -51,7 +51,7 @@ public class Cart {
             double subPrice = p.getPrice() * products.get(p.getProductId());
             total += subPrice;
         }
-        return total;
+        return (double) Math.round(total * 100) / 100;
     }
 
 }
