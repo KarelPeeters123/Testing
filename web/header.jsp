@@ -10,6 +10,7 @@
             <li id="<c:if test="${param.title eq 'Product Overview'}">actual</c:if>"><a href="Controller?action=ProductOverview">Products</a></li>
             <li id="<c:if test="${param.title eq 'Add Product'}">actual</c:if>"><a href="Controller?action=ToAddProduct">Add Product</a></li>
             <li id="<c:if test="${param.title eq 'Sign Up'}">actual</c:if>"><a href="signUp.jsp">Sign up</a></li>
+            <li id="<c:if test="${param.title eq 'Cart'}">actual</c:if>"><a href="Controller?action=CartOverview">Cart</a></li>
         </ul>
     </nav>
     <h2>${param.title}</h2>
