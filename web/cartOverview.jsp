@@ -17,7 +17,7 @@
 
     <main>
         <c:choose>
-            <c:when test="${products==null}">
+            <c:when test="${fn:length(products) == 0}">
                 <p>Your cart is empty.</p>
             </c:when>
             <c:otherwise>
