@@ -42,6 +42,10 @@
                 <br><br>
                 <p>Total amount: &euro; ${total}</p>
 
+                <form method="post" action="Controller?action=Buy" novalidate="novalidate">
+                    <p><input type="submit" id="buy" value="Buy"></p>
+                </form>
+
             </c:otherwise>
         </c:choose>
     </main>
