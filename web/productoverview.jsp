@@ -49,12 +49,21 @@
                             <a href="Controller?action=DeleteProduct&id=${fn:escapeXml(product.productId)}">Delete</a>
                         </td>
                     </c:if>
-                    <td><a href="Controller?action=BuyProductOverview&id=${fn:escapeXml(product.productId)}">Buy</a>
+                    <td>
+                        <form method="post" action="Controller?action=AddToCart" novalidate>
+                            <input type="hidden" id="id" name="id" value="${fn:escapeXml(product.productId)}">
+                            <input type="number" id="quantity" name="quantity" value="1" required>
+                            <input type="submit" id="addToCart" value="Add To Cart">
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
 
             <caption>Product Overview</caption>
         </table>
+
+        <p>Shopping cart (${total})</p>
+
     </main>
     <jsp:include page="footer.jsp"/>
 </div>
