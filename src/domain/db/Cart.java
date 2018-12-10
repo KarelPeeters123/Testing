@@ -18,7 +18,9 @@ public class Cart {
 
     public void add(int productId, int quantity) {
         if (quantity < 0) throw new IllegalArgumentException("quantity can't be negative");
-        products.put(productId, getAmount(productId) + quantity);
+        if (quantity > 0) {
+            products.put(productId, getAmount(productId) + quantity);
+        }
     }
 
     private int getAmount(int id) {
