@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-public class ConfirmAddress extends RequestHandler {
+public class ConfirmAddress extends ToOrderSuccessful {
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -29,7 +29,7 @@ public class ConfirmAddress extends RequestHandler {
         if (errors.size() == 0) {
             try {
                 person.setAddress(address);
-                return "orderSuccessful.jsp";
+                return super.handleRequest(request, response);
             } catch (Exception e) {
                 errors.add(e.getMessage());
                 request.setAttribute("errors", errors);
@@ -74,7 +74,7 @@ public class ConfirmAddress extends RequestHandler {
         try {
             int postalCodeInt = Integer.parseInt(postalCode);
             address.setPostalCode(postalCodeInt);
-            request.setAttribute("postalCodePreviousValue", postalCodeInt);
+            request.setAttribute("postalCodePreviousValue", postalCode);
         } catch (NumberFormatException e) {
             errors.add("Invalid postal code");
         } catch (IllegalArgumentException e) {
@@ -86,8 +86,8 @@ public class ConfirmAddress extends RequestHandler {
         String houseNumber = request.getParameter("houseNumber");
         try {
             int houseNumberInt = Integer.parseInt(houseNumber);
-            address.setPostalCode(houseNumberInt);
-            request.setAttribute("houseNumberPreviousValue", houseNumberInt);
+            address.setHouseNumber(houseNumberInt);
+            request.setAttribute("houseNumberPreviousValue", houseNumber);
         } catch (NumberFormatException e) {
             errors.add("Invalid house number");
         } catch (IllegalArgumentException e) {

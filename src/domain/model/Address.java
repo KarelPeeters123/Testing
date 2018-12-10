@@ -51,4 +51,9 @@ public class Address {
     public int getHouseNumber() {
         return houseNumber;
     }
+
+    @Override
+    public String toString() {
+        return address + " " + houseNumber + ", " + postalCode + " " + place;
+    }
 }

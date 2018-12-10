@@ -50,7 +50,7 @@
                         </td>
                     </c:if>
                     <td>
-                        <form method="post" action="Controller?action=AddToCart" novalidate>
+                        <form id="overviewForm" method="post" action="Controller?action=AddToCart" novalidate>
                             <input type="hidden" id="id" name="id" value="${fn:escapeXml(product.productId)}">
                             <input type="number" id="quantity" name="quantity" value="1" required>
                             <input type="submit" id="addToCart" value="Add To Cart">
