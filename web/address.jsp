@@ -31,7 +31,7 @@
         <form method="post" action="Controller?action=ConfirmAddress" novalidate="novalidate">
 
             <p>
-                <label for="address">Address</label>
+                <label for="address">Street</label>
                 <input type="text" id="address" name="address"
                        required value="${fn:escapeXml(addressPreviousValue)}">
             </p>
